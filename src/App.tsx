@@ -91,8 +91,8 @@ const Card = ({
       className={clsx(
         css`
           position: absolute;
-          width: 100%;
           transition: left 0.2s;
+          width: 100%;
         `,
         swipeDirection === "right"
           ? css`
@@ -124,7 +124,7 @@ const Card = ({
         }}
         className={clsx(
           css`
-            width: 80%;
+            width: 100%;
             aspect-ratio: 300/528;
             position: relative;
             box-sizing: border-box;
@@ -344,7 +344,7 @@ function App() {
           position: relative;
           max-width: 300px;
           margin: auto;
-          top: 60px;
+          top: 5vh;
         `}
       >
         {cards.map(({ number, src, href }, index) => {
