@@ -124,7 +124,7 @@ const Card = ({
         }}
         className={clsx(
           css`
-            width: 90%;
+            width: 80%;
             aspect-ratio: 300/528;
             position: relative;
             box-sizing: border-box;
@@ -342,10 +342,9 @@ function App() {
       <div
         className={css`
           position: relative;
-          width: 100%;
           max-width: 300px;
           margin: auto;
-          height: 100vh;
+          top: 60px;
         `}
       >
         {cards.map(({ number, src, href }, index) => {
