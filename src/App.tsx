@@ -120,7 +120,6 @@ const Card = ({
     >
       <div
         onClick={() => {
-          console.log("hoge");
           setOpen(true);
         }}
         className={clsx(
@@ -134,7 +133,7 @@ const Card = ({
             transition: transform 0.4s ease-in-out;
             transform-style: preserve-3d;
             perspective: 1000px;
-            transform: rotateY(180deg);
+            transform: rotateY(0deg);
             box-shadow: 0px 0px 1px 0px #fff;
             img {
               -webkit-user-drag: none;
@@ -142,11 +141,12 @@ const Card = ({
               display: flex;
               width: 100%;
               height: 100%;
+              opacity: 1;
             }
           `,
           open
             ? css`
-                transform: rotateY(0deg);
+                transform: rotateY(180deg);
               `
             : null
         )}
@@ -177,8 +177,6 @@ const Card = ({
             width: 100%;
             height: 100%;
             backface-visibility: hidden;
-            transform: rotateY(180deg);
-
             background: repeating-radial-gradient(
                 circle,
                 transparent,
