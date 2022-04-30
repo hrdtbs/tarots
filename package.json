@@ -13,6 +13,7 @@
     "@linaria/react": "^3.0.0-beta.15",
     "@linaria/shaker": "^3.0.0-beta.15",
     "clsx": "^1.1.1",
+    "framer-motion": "^6.3.3",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   },
