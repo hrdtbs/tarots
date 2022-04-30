@@ -160,6 +160,7 @@ const cards = shuffle(
 const Card = ({ index }: { index: number }) => {
   const [tapped, setTapped] = useState(false);
   const [deleted, setDeleted] = useState(false);
+  const [tappable, setTappable] = useState(false);
   const controls = useAnimation();
   const data = cards[index];
   return deleted ? (
@@ -167,7 +168,7 @@ const Card = ({ index }: { index: number }) => {
       <motion.div
         animate={{
           zIndex: 99,
-          x: 0,
+          x: -20,
           opacity: 0.9,
           rotateZ: data.reversed ? 180 : 0,
         }}
@@ -199,7 +200,6 @@ const Card = ({ index }: { index: number }) => {
       onDragEnd={async (event, info) => {
         const offsetX = info.offset.x;
         const velocityX = info.velocity.x;
-        console.log(offsetX, velocityX);
         if (offsetX > 100 || velocityX > 500) {
           await controls.start({
             x: "100%",
@@ -217,6 +217,9 @@ const Card = ({ index }: { index: number }) => {
       animate={controls}
     >
       <motion.div
+        onAnimationComplete={() => {
+          setTappable(true);
+        }}
         animate={{
           rotateZ: [
             0,
@@ -265,17 +268,25 @@ const Card = ({ index }: { index: number }) => {
         }}
       >
         <motion.div
-          onTap={() => {
-            setTapped(true);
-          }}
-          animate={{
-            rotateY: tapped ? 180 : 0,
-            rotateZ: data.reversed ? 180 : 0,
-          }}
+          onTap={
+            tappable
+              ? () => {
+                  setTapped(true);
+                }
+              : undefined
+          }
+          animate={
+            tappable
+              ? {
+                  rotateY: tapped ? 180 : 0,
+                }
+              : {}
+          }
           className={cardStyles.container}
           style={{
             transformStyle: "preserve-3d",
             perspective: 1000,
+            rotateZ: data.reversed ? 180 : 0,
           }}
         >
           <div
