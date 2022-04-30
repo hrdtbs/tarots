@@ -261,7 +261,7 @@ const Card = ({ index }: { index: number }) => {
       >
         <motion.div
           onTap={() => {
-            setTapped((prev) => !prev);
+            setTapped(true);
           }}
           animate={{
             rotateY: tapped ? 180 : 0,
@@ -277,6 +277,7 @@ const Card = ({ index }: { index: number }) => {
             className={css`
               position: relative;
               height: 100%;
+              transform: rotateY(180deg);
             `}
           >
             <img
