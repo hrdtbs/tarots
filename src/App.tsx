@@ -257,7 +257,12 @@ const Card = ({ index }: { index: number }) => {
         transition={{
           duration: 4,
         }}
-        style={{ position: "absolute", top: 20, left: 20 }}
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          margin: "auto",
+        }}
       >
         <motion.div
           onTap={() => {
@@ -322,17 +327,23 @@ function App() {
   return (
     <div
       className={css`
-        position: relative;
         width: 100vw;
         height: 100vh;
         overflow: hidden;
       `}
     >
-      <motion.div>
+      <div
+        className={css`
+          width: 300px;
+          margin: auto;
+          margin-top: 40px;
+          position: relative;
+        `}
+      >
         {cards.map(({ number }, index) => {
           return <Card index={index} key={number} />;
         })}
-      </motion.div>
+      </div>
     </div>
   );
 }
