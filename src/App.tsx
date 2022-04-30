@@ -133,7 +133,7 @@ const Card = ({
             transition: transform 0.4s ease-in-out;
             transform-style: preserve-3d;
             perspective: 1000px;
-            transform: rotateY(0deg);
+            transform: rotateY(180deg);
             box-shadow: 0px 0px 1px 0px #fff;
             img {
               -webkit-user-drag: none;
@@ -146,37 +146,17 @@ const Card = ({
           `,
           open
             ? css`
-                transform: rotateY(180deg);
+                transform: rotateY(0deg);
               `
             : null
         )}
       >
         <div
           className={css`
-            position: relative;
-            height: 100%;
-          `}
-        >
-          <img src={src} />
-          <a
-            className={css`
-              position: absolute;
-              bottom: 0px;
-              width: 100%;
-              height: 80px;
-            `}
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-          />
-        </div>
-        <div
-          className={css`
             position: absolute;
             top: 0px;
             width: 100%;
             height: 100%;
-            backface-visibility: hidden;
             background: repeating-radial-gradient(
                 circle,
                 transparent,
@@ -197,6 +177,26 @@ const Card = ({
             background-color: #484848;
           `}
         />
+        <div
+          className={css`
+            position: relative;
+            height: 100%;
+            backface-visibility: hidden;
+          `}
+        >
+          <img src={src} />
+          <a
+            className={css`
+              position: absolute;
+              bottom: 0px;
+              width: 100%;
+              height: 80px;
+            `}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+          />
+        </div>
       </div>
     </div>
   );
