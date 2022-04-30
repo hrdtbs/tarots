@@ -113,8 +113,8 @@ const Card = ({
         setLocked(false);
       }}
       style={{
-        top: index,
-        left: index,
+        top: index * 0.5,
+        left: index * 0.5,
         zIndex: index,
       }}
     >
@@ -328,12 +328,10 @@ function App() {
 
   const handleSwap = () => {
     setCards((prev) => {
-      const copy = prev.slice();
+      const copy = prev.slice(0, -1);
+      const last = prev.slice(-1)[0];
       const index = Math.floor(Math.random() * (prev.length - 1));
-      const tmp = copy[index];
-      copy[prev.length - 1] = tmp;
-      copy[index] = prev[prev.length - 1];
-      return copy;
+      return [...copy.slice(0, index), last, ...copy.slice(index)];
     });
   };
 
